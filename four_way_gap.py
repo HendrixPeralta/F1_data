@@ -247,7 +247,57 @@ ax.legend(title='Driver and Target',
                 markerscale=2.5, 
                 loc='best', 
                 bbox_to_anchor=(0.01, 0.5, 0.5, 0.5))
-title = "Target to Win the Championship by OUTSCORING VER in the last race"
+title = "Championship if ->  Ouscores VER in the last race"
+ax.set_title(title, 
+             pad=10,
+             fontsize=17,
+             fontdict={"weight":"bold"})
+# %%
+palette = ['blue', 'orange', 'red', 'orange']  # Colors for the drivers
+linestyles = {'VER': '', 'NOR': '', 'LEC': '', 'PIA': (2, 2)}  # Solid for all except dotted for last driver
+
+
+palette_target = ['orange', 'red', 'orange']  # Colors for the drivers
+linestyles_target = {'NOR target': '', 'LEC target': '', 'PIA target': (2, 2)}  # Solid for all except dotted for last driver
+
+fig, ax = plt.subplots(1, figsize=(12,12))
+
+sns.lineplot(melted_standings_gap, 
+             ax=ax,
+             x= "GP", 
+             y="Gap",
+             hue="driver",
+             palette=palette,
+             style="driver",
+             dashes=linestyles,
+             markers=True,
+             linewidth=5)
+
+ax.tick_params(axis="x", labelsize=15)
+ax.tick_params(axis="y", labelsize=15)
+
+sns.lineplot(melted_targets_win,
+             alpha = 0.3,
+             ax=ax, 
+             x= "GP", 
+             y="Gap",
+             hue="driver",
+             palette=palette_target,
+             style="driver",
+             dashes=linestyles_target,
+             markers=True,
+             linewidth=3.7)
+
+ax.set_ylabel("Points", fontsize=15, fontdict={"weight":"bold"})
+ax.set_xlabel("")
+
+ax.legend(title='Driver and Target', 
+                fontsize=13, 
+                title_fontsize='15',
+                markerscale=2.5, 
+                loc='best', 
+                bbox_to_anchor=(0.01, 0.5, 0.5, 0.5))
+title = "Championship if -> Win last race"
 ax.set_title(title, 
              pad=10,
              fontsize=17,
