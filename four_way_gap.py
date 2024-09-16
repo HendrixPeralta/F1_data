@@ -141,7 +141,7 @@ PIA_target_win = (standings_gap["BEL"]["PIA"]+6)/9
 targets_outscore = pd.DataFrame(columns=["driver", "BEL", "NED", "ITA", "AZE"])
 # %%
 
-NOR_target_outscore_pred = ["NOR_target",
+NOR_target_outscore_pred = ["NOR target",
                 standings_gap["BEL"]["NOR"], 
                 standings_gap["BEL"]["NOR"] - NOR_target_outscore, 
                 standings_gap["BEL"]["NOR"] - NOR_target_outscore*2,
@@ -149,7 +149,7 @@ NOR_target_outscore_pred = ["NOR_target",
 
 targets_outscore.loc[0] = NOR_target_outscore_pred
 # %%
-LEC_target_outscore_pred = ["LEC_target",
+LEC_target_outscore_pred = ["LEC target",
                 standings_gap["BEL"]["LEC"], 
                 standings_gap["BEL"]["LEC"] - LEC_target_outscore, 
                 standings_gap["BEL"]["LEC"] - LEC_target_outscore*2,
@@ -157,7 +157,7 @@ LEC_target_outscore_pred = ["LEC_target",
 
 targets_outscore.loc[1] = LEC_target_outscore_pred
 # %%
-PIA_target_outscore_pred = ["PIA_target",
+PIA_target_outscore_pred = ["PIA target",
                 standings_gap["BEL"]["PIA"], 
                 standings_gap["BEL"]["PIA"] - PIA_target_outscore, 
                 standings_gap["BEL"]["PIA"] - PIA_target_outscore*2,
@@ -172,7 +172,7 @@ targets_outscore.loc[2] = PIA_target_outscore_pred
 targets_win = pd.DataFrame(columns=["driver", "BEL", "NED", "ITA", "AZE"])
 # %%
 
-NOR_target_win_pred = ["NOR_target",
+NOR_target_win_pred = ["NOR target",
                 standings_gap["BEL"]["NOR"], 
                 standings_gap["BEL"]["NOR"] - NOR_target_win, 
                 standings_gap["BEL"]["NOR"] - NOR_target_win*2,
@@ -180,7 +180,7 @@ NOR_target_win_pred = ["NOR_target",
 
 targets_win.loc[0] = NOR_target_win_pred
 # %%
-LEC_target_win_pred = ["LEC_target",
+LEC_target_win_pred = ["LEC target",
                 standings_gap["BEL"]["LEC"], 
                 standings_gap["BEL"]["LEC"] - LEC_target_win, 
                 standings_gap["BEL"]["LEC"] - LEC_target_win*2,
@@ -188,11 +188,63 @@ LEC_target_win_pred = ["LEC_target",
 
 targets_win.loc[1] = LEC_target_win_pred
 # %%
-PIA_target_win_pred = ["PIA_target",
+PIA_target_win_pred = ["PIA target",
                 standings_gap["BEL"]["PIA"], 
                 standings_gap["BEL"]["PIA"] - PIA_target_win, 
                 standings_gap["BEL"]["PIA"] - PIA_target_win*2,
                 standings_gap["BEL"]["PIA"] - PIA_target_win*3]
 
 targets_win.loc[2] = PIA_target_win_pred
+# %%
+
+melted_standings_gap = standings_gap.reset_index().melt(id_vars="driver", var_name="GP", value_name="Gap")
+melted_targets_outscore = targets_outscore.melt(id_vars="driver", var_name="GP", value_name="Gap")
+melted_targets_win = targets_win.melt(id_vars="driver", var_name="GP", value_name="Gap")
+
+
+# %%
+palette = ['blue', 'orange', 'red', 'orange']  # Colors for the drivers
+linestyles = {'VER': '', 'NOR': '', 'LEC': '', 'PIA': (2, 2)}  # Solid for all except dotted for last driver
+
+
+palette_target = ['orange', 'red', 'orange']  # Colors for the drivers
+linestyles_target = {'NOR target': '', 'LEC target': '', 'PIA target': (2, 2)}  # Solid for all except dotted for last driver
+
+fig, ax = plt.subplots(1, figsize=(12,12))
+
+sns.lineplot(melted_standings_gap, 
+             ax=ax,
+             x= "GP", 
+             y="Gap",
+             hue="driver",
+             palette=palette,
+             style="driver",
+             dashes=linestyles,
+             markers=True,
+             linewidth=5)
+
+ax.tick_params(axis="x", labelsize=15)
+ax.tick_params(axis="y", labelsize=15)
+
+sns.lineplot(melted_targets_outscore,
+             alpha = 0.3,
+             ax=ax, 
+             x= "GP", 
+             y="Gap",
+             hue="driver",
+             palette=palette_target,
+             style="driver",
+             dashes=linestyles_target,
+             markers=True,
+             linewidth=3.7)
+
+ax.set_ylabel("Points", fontsize=15, fontdict={"weight":"bold"})
+ax.set_xlabel("")
+
+ax.legend(title='Driver and Target', 
+                fontsize=13, 
+                title_fontsize='15',
+                markerscale=2.5, 
+                loc='best', 
+                bbox_to_anchor=(0.01, 0.5, 0.5, 0.5))
 # %%
