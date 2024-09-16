@@ -11,3 +11,6 @@ point_system = pd.DataFrame(f1_points, columns=["pos", "point"])
 
 point_system.to_csv("./resources/point_system.csv")
 # %%
+drivers = [["VER",313], ["NOR", 254], ["LEC", 235], ["PIA", 222]]
+standings = pd.DataFrame(drivers, columns=["driver", "total"])
+# %%
