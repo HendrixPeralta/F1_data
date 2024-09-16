@@ -168,3 +168,31 @@ targets_outscore.loc[2] = PIA_target_outscore_pred
 
 
 # %%
+
+targets_win = pd.DataFrame(columns=["driver", "BEL", "NED", "ITA", "AZE"])
+# %%
+
+NOR_target_win_pred = ["NOR_target",
+                standings_gap["BEL"]["NOR"], 
+                standings_gap["BEL"]["NOR"] - NOR_target_win, 
+                standings_gap["BEL"]["NOR"] - NOR_target_win*2,
+                standings_gap["BEL"]["NOR"] - NOR_target_win*3]
+
+targets_win.loc[0] = NOR_target_win_pred
+# %%
+LEC_target_win_pred = ["LEC_target",
+                standings_gap["BEL"]["LEC"], 
+                standings_gap["BEL"]["LEC"] - LEC_target_win, 
+                standings_gap["BEL"]["LEC"] - LEC_target_win*2,
+                standings_gap["BEL"]["LEC"] - LEC_target_win*3]
+
+targets_win.loc[1] = LEC_target_win_pred
+# %%
+PIA_target_win_pred = ["PIA_target",
+                standings_gap["BEL"]["PIA"], 
+                standings_gap["BEL"]["PIA"] - PIA_target_win, 
+                standings_gap["BEL"]["PIA"] - PIA_target_win*2,
+                standings_gap["BEL"]["PIA"] - PIA_target_win*3]
+
+targets_win.loc[2] = PIA_target_win_pred
+# %%
