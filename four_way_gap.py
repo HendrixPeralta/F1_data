@@ -247,4 +247,9 @@ ax.legend(title='Driver and Target',
                 markerscale=2.5, 
                 loc='best', 
                 bbox_to_anchor=(0.01, 0.5, 0.5, 0.5))
+title = "Target to Win the Championship by OUTSCORING VER in the last race"
+ax.set_title(title, 
+             pad=10,
+             fontsize=17,
+             fontdict={"weight":"bold"})
 # %%
