@@ -23,6 +23,24 @@ standings.insert(0,
                   standings["AZE"]["PIA"]-point_system["point"][1]],
                   True)
 
+#%%
+standings.insert(0, 
+                 "NED", 
+                 [standings["ITA"]["VER"]-point_system["point"][6],
+                  standings["ITA"]["NOR"]-point_system["point"][3]-f_lap,
+                  standings["ITA"]["LEC"]-point_system["point"][1],
+                  standings["ITA"]["PIA"]-point_system["point"][2]],
+                  True)
+
+#%%
+standings.insert(0, 
+                 "BEL", 
+                 [standings["NED"]["VER"]-point_system["point"][2],
+                  standings["NED"]["NOR"]-point_system["point"][1]-f_lap,
+                  standings["NED"]["LEC"]-point_system["point"][3],
+                  standings["NED"]["PIA"]-point_system["point"][4]],
+                  True)
+
 # %%
 standings
 # %%
