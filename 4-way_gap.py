@@ -42,5 +42,37 @@ standings.insert(0,
                   True)
 
 # %%
-standings
+NOR_target = (standings["BEL"]["VER"] -  standings["BEL"]["NOR"])/10
+LEC_target = (standings["BEL"]["VER"] -  standings["BEL"]["LEC"])/10
+PIA_target = (standings["BEL"]["VER"] -  standings["BEL"]["PIA"])/10
+
 # %%
+
+targets = pd.DataFrame(columns=["driver", "BEL", "NED", "ITA", "AZE"])
+# %%
+
+NOR_target_pred = ["NOR_target",
+                standings["BEL"]["NOR"], 
+                standings["NED"]["VER"] - NOR_target*9, 
+                standings["ITA"]["VER"] - NOR_target*8,
+                standings["AZE"]["VER"] - NOR_target*7]
+
+targets.loc[0] = NOR_target_pred
+# %%
+LEC_target_pred = ["LEC_target",
+                standings["BEL"]["LEC"], 
+                standings["NED"]["VER"] - LEC_target*9, 
+                standings["ITA"]["VER"] - LEC_target*8,
+                standings["AZE"]["VER"] - LEC_target*7]
+
+targets.loc[1] = LEC_target_pred
+# %%
+PIA_target_pred = ["PIA_target",
+                standings["BEL"]["PIA"], 
+                standings["NED"]["VER"] - PIA_target*9, 
+                standings["ITA"]["VER"] - PIA_target*8,
+                standings["AZE"]["VER"] - PIA_target*7]
+
+targets.loc[2] = PIA_target_pred
+# %%
+fig, ax = 
