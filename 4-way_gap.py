@@ -12,14 +12,17 @@ point_system.set_index("pos", inplace=True)
 point_system.to_csv("./resources/point_system.csv")
 # %%
 drivers = [["VER",313], ["NOR", 254], ["LEC", 235], ["PIA", 222]]
-standings = pd.DataFrame(drivers, columns=["driver", "total"])
+standings = pd.DataFrame(drivers, columns=["driver", "AZE"])
 standings.set_index("driver", inplace=True)
 # %%
-standings.insert(1, 
-                 "AZE", 
-                 [standings["total"]["VER"]-point_system[4],
-                  standings["total"]["NOR"]-point_system[3],
-                  standings["total"]["VER"]-point_system[4],
-                  standings["total"]["VER"]-point_system[4]],
+standings.insert(0, 
+                 "ITA", 
+                 [standings["AZE"]["VER"]-point_system["point"][5],
+                  standings["AZE"]["NOR"]-point_system["point"][4]-f_lap,
+                  standings["AZE"]["LEC"]-point_system["point"][2],
+                  standings["AZE"]["PIA"]-point_system["point"][1]],
                   True)
+
+# %%
+standings
 # %%
