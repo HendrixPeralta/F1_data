@@ -249,8 +249,8 @@ ax.legend(title='Driver and Target',
                 bbox_to_anchor=(0.01, 0.5, 0.5, 0.5))
 title = "Championship if ->  Ouscores VER in the last race"
 ax.set_title(title, 
-             pad=10,
-             fontsize=17,
+             pad=15,
+             fontsize=20,
              fontdict={"weight":"bold"})
 # %%
 palette = ['blue', 'orange', 'red', 'orange']  # Colors for the drivers
@@ -299,7 +299,7 @@ ax.legend(title='Driver and Target',
                 bbox_to_anchor=(0.01, 0.5, 0.5, 0.5))
 title = "Championship if -> Win last race"
 ax.set_title(title, 
-             pad=10,
-             fontsize=17,
+             pad=15,
+             fontsize=20,
              fontdict={"weight":"bold"})
 # %%
